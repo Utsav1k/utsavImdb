@@ -76,11 +76,11 @@ db.on('error',function(err){
 app.use('/login',userLogin);
 app.use('/register',userRegister);
 app.use('/api',api);
-let reqPath = path.join(__dirname, '../');//It goes three folders or directories back from given __dirname.
+// let reqPath = path.join(__dirname, '../');//It goes three folders or directories back from given __dirname.
 // console.log(reqPath)
-app.use(express.static(path.join(reqPath, "newApp", "build")))
+app.use(express.static(path.join(__dirname, "newApp", "build")))
 app.get("*", (req, res) => {
-    res.sendFile(path.join(reqPath, "newApp", "build", "index.html"));
+    res.sendFile(path.join(__dirname, "newApp", "build", "index.html"));
 });
 
 app.listen(port,()=>{
