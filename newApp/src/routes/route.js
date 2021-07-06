@@ -4,19 +4,19 @@ import Config from '../config/config.js';
 const requests = {
     post : (url, body) =>
             request
-                .post(Config.serviceURL + ":" + Config.port + url , body)
+                .post(url , body)
                 .withCredentials(true),
     put : (url, body) =>
             request
-                .put(Config.serviceURL + ":" + Config.port + url , body)
+                .put(url , body)
                 .withCredentials(true),
     get : (url) =>
             request
-                .get(Config.serviceURL + ":" + Config.port + url )
+                .get(url )
                 .withCredentials(true),
     delete : (url) =>
             request
-                .del(Config.serviceURL + ":" + Config.port + url )
+                .del(url )
                 .withCredentials(true),
 }
 
