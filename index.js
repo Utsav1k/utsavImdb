@@ -8,7 +8,7 @@ const userRegister =require('./Routes/register');
 const api =require('./Routes/api.js');
 const path = require('path');
 const port = process.env.PORT || 3001;
-
+require("dotenv").config();
 
 app.use(express.json());
 app.use(cors({
