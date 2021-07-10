@@ -9,7 +9,7 @@ class ImdbController {
         ImdbNameModel.title=e.target.value;
     }
     searchMovie(thisParent){
-      console.log(thisParent.state.searchMovieText)
+      // console.log(thisParent.state.searchMovieText)
       if(thisParent.state.searchType=='single'){
         thisParent.state.titles=[];
       }
@@ -29,9 +29,9 @@ class ImdbController {
               })
               thisParent.state.openMovieList[res.body.title]=true;
               thisParent.setState({titles:thisParent.state.titles});
-              console.log(res);
+              // console.log(res);
             } catch (err) {
-              console.log(err);
+              // console.log(err);
             }
           })();
     }
@@ -56,9 +56,9 @@ class ImdbController {
                 ImdbMovieDetailsModel.trailer=res.body.trailer;
                 ImdbMovieDetailsModel.year=res.body.year;
                 ImdbMovieDetailsModel.technical_specs=res.body.technical_specs;
-              console.log(res);
+              // console.log(res);
             } catch (err) {
-              console.log(err);
+              // console.log(err);
             }
           })();
     }
@@ -77,7 +77,7 @@ class ImdbController {
             ImdbNameModel.title=List[i].substring(0,List[i].length-1);
            
             const res = await Route.Imdb.searchByName( ImdbNameModel ) ;
-            console.log(res)
+            // console.log(res)
             thisParent.state.titles.push({
               "title":await res.body.title,
               "movies":await res.body.movies.titles
@@ -94,9 +94,9 @@ class ImdbController {
             ImdbModel.titles=thisParent.state.titles;
             // ImdbModel.companies=res.body.companies;
             // ImdbModel.names=res.body.names;
-            console.log(thisParent.state.titles);
+            // console.log(thisParent.state.titles);
           } catch (err) {
-            console.log(err);
+            // console.log(err);
           }
         })();
       }
@@ -105,10 +105,11 @@ class ImdbController {
       (async () => {
         try {
           const res = await Route.Imdb.savePreferredMovies( thisParent.state.selectedMovieList ) ;
-
-          console.log(res);
+          thisParent.setState({showSaveMessage:'saving started... go to saved movies tab to check saved movies'})
+          // console.log(res);
         } catch (err) {
-          console.log(err);
+          thisParent.setState({showSaveMessage:'some error while saving movies'})
+          // console.log(err);
         }
       })();
     }
@@ -117,9 +118,9 @@ class ImdbController {
         try {
           const res = await Route.Imdb.getSavedMovies(  ) ;
 
-          console.log(res);
+          // console.log(res);
         } catch (err) {
-          console.log(err);
+          // console.log(err);
         }
       })();
     }

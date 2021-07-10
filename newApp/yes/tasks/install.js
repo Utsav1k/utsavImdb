@@ -106,7 +106,7 @@ if(currentConfig && manager.name === 'NPM') {
 
     // perform update if new version
     if(currentConfig.version !== release.version) {
-      console.log('Updating Semantic UI from ' + currentConfig.version + ' to ' + release.version);
+      // console.log('Updating Semantic UI from ' + currentConfig.version + ' to ' + release.version);
 
       console.info('Updating ui definitions...');
       wrench.copyDirSyncRecursive(source.definitions, updatePaths.definition, settings.wrench.overwrite);
@@ -151,14 +151,14 @@ if(currentConfig && manager.name === 'NPM') {
       return;
     }
     else {
-      console.log('Current version of Semantic UI already installed');
+      // console.log('Current version of Semantic UI already installed');
       return;
     }
 
   }
   else {
     console.error('Cannot locate files to update at path: ', updatePaths.definition);
-    console.log('Running installer');
+    // console.log('Running installer');
   }
 
 }
@@ -223,12 +223,12 @@ gulp.task('create install files', function(callback) {
   }
   console.clear();
   if(install.shouldAutoInstall()) {
-    console.log('Auto-Installing (Without User Interaction)');
+    // console.log('Auto-Installing (Without User Interaction)');
   }
   else {
-    console.log('Installing');
+    // console.log('Installing');
   }
-  console.log('------------------------------');
+  // console.log('------------------------------');
 
 
   /*--------------
@@ -255,7 +255,7 @@ gulp.task('create install files', function(callback) {
     // Set root to custom root path if set
     if(answers.customRoot) {
       if(answers.customRoot === '') {
-        console.log('Unable to proceed, invalid project root');
+        // console.log('Unable to proceed, invalid project root');
         return;
       }
       manager.root = answers.customRoot;
@@ -296,7 +296,7 @@ gulp.task('create install files', function(callback) {
       console.error('NPM does not have permissions to create folders at your specified path. Adjust your folders permissions and run "npm install" again');
     }
 
-    console.log('Installing to \x1b[92m' + answers.semanticRoot + '\x1b[0m');
+    // console.log('Installing to \x1b[92m' + answers.semanticRoot + '\x1b[0m');
 
     console.info('Copying UI definitions');
     wrench.copyDirSyncRecursive(source.definitions, installPaths.definition, settings.wrench.overwrite);
@@ -420,12 +420,12 @@ gulp.task('clean up install', function() {
 
   // Completion Message
   if(installFolder && !install.shouldAutoInstall()) {
-    console.log('\n Setup Complete! \n Installing Peer Dependencies. \x1b[0;31mPlease refrain from ctrl + c\x1b[0m... \n After completion navigate to \x1b[92m' + answers.semanticRoot + '\x1b[0m and run "\x1b[92mgulp build\x1b[0m" to build');
+    // console.log('\n Setup Complete! \n Installing Peer Dependencies. \x1b[0;31mPlease refrain from ctrl + c\x1b[0m... \n After completion navigate to \x1b[92m' + answers.semanticRoot + '\x1b[0m and run "\x1b[92mgulp build\x1b[0m" to build');
     process.exit(0);
   }
   else {
-    console.log('');
-    console.log('');
+    // console.log('');
+    // console.log('');
   }
 
   // If auto-install is switched on, we skip the configuration section and simply build the dependencies

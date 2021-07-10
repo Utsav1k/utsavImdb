@@ -22,7 +22,6 @@ app.use((req,res,next) =>{
 	res.header("Access-Control-Allow-Credentials", true);
 	next();
 })
-console.log('../')
 
 var mongoose =require('mongoose');
 var mongoDB=process.env.MONGODB_URI||'mongodb://localhost:27017/db';
@@ -31,10 +30,10 @@ mongoose.set('useFindAndModify', false);
 mongoose.Promise=global.Promise;
 var db =mongoose.connection;
 db.on('connected',function(){
-	console.log('connection done');
+	// console.log('connection done');
 });
 db.on('error',function(err){
-	console.log('error');
+	// console.log('error');
 });
 
 // const OrientDBClient = require("orientjs").OrientDBClient;
@@ -47,7 +46,7 @@ db.on('error',function(err){
 // }).then(client => {
 //   return client.close();
 // }).then(()=> {
-//    console.log("Client closed");
+//    // console.log("Client closed");
 // });
 // var nodemailer = require('nodemailer');
 
@@ -68,21 +67,21 @@ db.on('error',function(err){
 
 // transporter.sendMail(mailOptions, function(error, info){
 //   if (error) {
-//     console.log(error);
+//     // console.log(error);
 //   } else {
-//     console.log('Email sent: ' + info.response);
+//     // console.log('Email sent: ' + info.response);
 //   }
 // });
 app.use('/login',userLogin);
 app.use('/register',userRegister);
 app.use('/api',api);
 // let reqPath = path.join(__dirname, '../');//It goes three folders or directories back from given __dirname.
-// console.log(reqPath)
+// // console.log(reqPath)
 app.use(express.static(path.join(__dirname, "newApp", "build")))
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "newApp", "build", "index.html"));
 });
 
 app.listen(port,()=>{
-    console.log("started");
+    // console.log("started");
 });

@@ -115,14 +115,14 @@ function parser(file, callback) {
     }
     else {
       // skip
-      // console.log(meta);
+      // // console.log(meta);
     }
 
 
   }
 
   catch(error) {
-    console.log(error, filename);
+    // console.log(error, filename);
   }
 
   callback(null, file);

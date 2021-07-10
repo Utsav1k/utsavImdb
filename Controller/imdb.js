@@ -53,7 +53,7 @@ exports.searchById = (req,res) => {
         searchByIdParams.url=detailsUrl+imdb.id;
         request(searchByIdParams, async function (error, response, body) {
             if (error) {
-                console.log(error);
+                // console.log(error);
                 return res.status(500).send(error);
             }
             else {

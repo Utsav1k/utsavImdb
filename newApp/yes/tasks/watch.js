@@ -69,7 +69,7 @@ module.exports = function(callback) {
   }
 
   //console.clear();
-  console.log('Watching source files for changes');
+  // console.log('Watching source files for changes');
 
   /*--------------
       Watch CSS
@@ -118,17 +118,17 @@ module.exports = function(callback) {
         return;
       }
       else if(isPackagedTheme) {
-        console.log('Change detected in packaged theme');
+        // console.log('Change detected in packaged theme');
         lessPath = replaceExt(file.path, '.less');
         lessPath = lessPath.replace(tasks.regExp.theme, source.definitions);
       }
       else if(isSiteTheme) {
-        console.log('Change detected in site theme');
+        // console.log('Change detected in site theme');
         lessPath = replaceExt(file.path, '.less');
         lessPath = lessPath.replace(source.site, source.definitions);
       }
       else {
-        console.log('Change detected in definition');
+        // console.log('Change detected in definition');
         lessPath = file.path;
       }
 
@@ -179,7 +179,7 @@ module.exports = function(callback) {
         ;
       }
       else {
-        console.log('Cannot find UI definition at path', lessPath);
+        // console.log('Cannot find UI definition at path', lessPath);
       }
     })
   ;

@@ -31,9 +31,9 @@ class Landing extends Component{
               const res = await Routes.Login.getLoginUser();
               LandingModel.isLogged=true;
               this.setState({isLogged : true});
-              console.log(res);
+              // console.log(res);
             } catch (err) {
-              console.log(err);
+              // console.log(err);
             }
           })();
     }
@@ -44,7 +44,7 @@ class Landing extends Component{
     }
 
     handleHeaderClick(e,{name}){
-        console.log(name)
+        // console.log(name)
         // this.setState({reglog:'register'});
 
         // this.setState({ activeItem: name });
@@ -57,9 +57,9 @@ class Landing extends Component{
               const res = await Routes.Logout.logout();
               LandingModel.isLogged=false;
               this.setState({isLogged : false});
-              console.log(res);
+              // console.log(res);
             } catch (err) {
-              console.log(err);
+              // console.log(err);
             }
           })();
     }

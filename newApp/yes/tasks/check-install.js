@@ -15,7 +15,7 @@ module.exports = function() {
 
   setTimeout(function() {
     if( !install.isSetup() ) {
-      console.log('Starting install...');
+      // console.log('Starting install...');
       gulp.start('install');
       return;
     }

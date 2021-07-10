@@ -26,7 +26,7 @@ var
 
 module.exports = function(callback) {
 
-  console.log('Registering repos with package managers');
+  // console.log('Registering repos with package managers');
 
   // Do Git commands synchronously per component, to avoid issues
   stepRepo = function() {
@@ -45,7 +45,7 @@ module.exports = function(callback) {
 
     /* Register with NPM */
     exec(updateNPM, execSettings, function(err, stdout, stderr) {
-      console.log(err, stdout, stderr);
+      // console.log(err, stdout, stderr);
       stepRepo();
     });
 

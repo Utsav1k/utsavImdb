@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import { withRouter, Route } from 'react-router-dom';
 
-import {Segment, Input, Button, Card, Loader, Dimmer, Checkbox, Accordion, Icon, Dropdown, Sticky, Image } from 'semantic-ui-react';
+import {Segment, Input, Button, Card, Loader, Dimmer, Message, Checkbox, Accordion, Icon, Dropdown, Sticky, Image } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
 import ImdbHomeController from '../../controllers/imdb/imdb.js';
@@ -14,7 +14,7 @@ import test from '../test.csv';
 class ImdbHome extends Component{
     constructor(props){
         super(props);
-        this.state={searchType:'single',searchOption:[{"key":"single","value":"single","text":"single search"},{"key":"multiple","value":"multiple","text":"multiple search"}],selectedMovieList:[],movList:[],searchMovieText:'',titles:[],dummyTitles:[],selectedMovieDetails:null,selectedMovieDetailsModelOpen:false,loader:false,openMovieList:[]};
+        this.state={showSaveMessage:'',searchType:'single',searchOption:[{"key":"single","value":"single","text":"single search"},{"key":"multiple","value":"multiple","text":"multiple search"}],selectedMovieList:[],movList:[],searchMovieText:'',titles:[],dummyTitles:[],selectedMovieDetails:null,selectedMovieDetailsModelOpen:false,loader:false,openMovieList:[]};
     }
     componentDidMount(){
         this.setState({titles:ImdbModel.titles});
@@ -44,14 +44,14 @@ class ImdbHome extends Component{
     }
     handleFile = (e) => {
         const content = e.target.result;
-        console.log(content)
+        // console.log(content)
         let movList=content.split('\n');
         movList.splice(0,1);
         if(movList[movList.length-1]==''){
             movList.splice(movList.length-1,1);
         }
         this.setState({movList:movList})
-        console.log(movList)
+        // console.log(movList)
        
         // You can set content in state and show it in render.
       }
@@ -60,7 +60,7 @@ class ImdbHome extends Component{
         let fileData = new FileReader();
         fileData.onloadend = this.handleFile;
         fileData.readAsText(file);
-        console.log(fileData)
+        // console.log(fileData)
         
       }
       movieSelect(item,e,{checked}){
@@ -76,7 +76,7 @@ class ImdbHome extends Component{
             }
         }
         this.setState({selectedMovieList:this.state.selectedMovieList})
-        // console.log(this.state.selectedMovieList)
+        // // console.log(this.state.selectedMovieList)
       }
     //   downloadTxtFile = () => {
     //     const element = document.createElement("a");
@@ -89,12 +89,13 @@ class ImdbHome extends Component{
     render(){
         return(
             <div style={{overflow:'auto'}}>
+                {this.state.showSaveMessage!=''?<Message info>{this.state.showSaveMessage}<Icon link onClick={(e) =>{this.setState({showSaveMessage:''})}} name="delete" /></Message>:null}
                 <Segment style={{overflow:'auto'}}>
         {/* <button onClick={this.downloadTxtFile}>Download txt</button> */}
-                   <Dropdown onChange={(e,{value}) =>{this.setState({searchType:value})}} value={this.state.searchType} inline options={this.state.searchOption} /><Input id="searchMovieText" value={this.state.searchMovieText} placeholder="Search" label={<Button primary onClick={() => ImdbHomeController.searchMovie(this) } >Search </Button>} labelPosition='right' onChange={(e) =>ImdbHomeController.setSearchText(this,e)} />
+                   <Input id="searchMovieText" value={this.state.searchMovieText} placeholder="Search" label={<Button primary onClick={() => ImdbHomeController.searchMovie(this) } >Search </Button>} labelPosition='right' onChange={(e) =>ImdbHomeController.setSearchText(this,e)} /><Dropdown onChange={(e,{value}) =>{this.setState({searchType:value})}} value={this.state.searchType} inline options={this.state.searchOption} />
                    {/* <Input id="searchMultText" value={this.state.searchMovieText} placeholder="" label={<Button primary onClick={() => ImdbHomeController.searchMovie(this) } >Search </Button>} labelPosition='right' onChange={(e) =>ImdbHomeController.searchMovieListDetails(this,["Friends","Utsav"],e)} /> */}
                    <Button size='large' onClick={(e)=>{this.setState({titles:[]})}} style={{float:'right'}} secondary>Reset</Button><p />
-                   <Input style={{overflow:'auto'}} type="file" accept=".csv" onChange={e => this.handleChangeFile(e.target.files[0])} ><a href={test} download="template.csv">Template for bulk search</a><input /><Button size='large' primary onClick={() => ImdbHomeController.searchMovieListDetails(this) } >Search </Button></Input>
+                   <Input style={{overflow:'auto'}} type="file" accept=".csv" onChange={e => this.handleChangeFile(e.target.files[0])} ><input /><Button size='large' primary onClick={() => ImdbHomeController.searchMovieListDetails(this) } >Search </Button><a href={test} download="template.csv">Template for bulk search</a></Input>
                    {this.state.titles.length>0?<Button size='large' style={{float:'right'}} primary onClick={(e) =>{ImdbHomeController.saveSelectedMovies(this)}}>Save</Button>:null}
 
                 </Segment>

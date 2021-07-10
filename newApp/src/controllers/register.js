@@ -39,9 +39,9 @@ class RegisterController {
               thisParent.setState({registerError:false});
               thisParent.setState({reglog:''})
 
-              console.log(res);
+              // console.log(res);
             } catch (err) {
-              console.log(err.response);
+              // console.log(err.response);
               thisParent.setState({registerError:true});
             }
           })();

@@ -163,7 +163,7 @@ module.exports = function(callback) {
 
     // Steps to next repository
     function nextRepo() {
-      console.log('Sleeping for 1 second...');
+      // console.log('Sleeping for 1 second...');
       // avoid rate throttling
       global.clearTimeout(timer);
       timer = global.setTimeout(stepRepo, 100);

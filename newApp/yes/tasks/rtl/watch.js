@@ -56,7 +56,7 @@ module.exports = function(callback) {
   }
 
   console.clear();
-  console.log('Watching source files for changes');
+  // console.log('Watching source files for changes');
 
   /*--------------
       Watch CSS
@@ -100,22 +100,22 @@ module.exports = function(callback) {
 
 
       if(isConfig) {
-        console.log('Change detected in theme config');
+        // console.log('Change detected in theme config');
         // cant tell which theme was changed in theme.config, rebuild all
         gulp.start('build');
       }
       else if(isPackagedTheme) {
-        console.log('Change detected in packaged theme');
+        // console.log('Change detected in packaged theme');
         lessPath = lessPath.replace(tasks.regExp.theme, source.definitions);
         lessPath = replaceExt(file.path, '.less');
       }
       else if(isSiteTheme) {
-        console.log('Change detected in site theme');
+        // console.log('Change detected in site theme');
         lessPath = lessPath.replace(source.site, source.definitions);
         lessPath = replaceExt(file.path, '.less');
       }
       else if(isDefinition) {
-        console.log('Change detected in definition');
+        // console.log('Change detected in definition');
         lessPath = replaceExt(file.path, '.less');
       }
 
@@ -169,7 +169,7 @@ module.exports = function(callback) {
 
       }
       else {
-        console.log('Cannot find UI definition at path', lessPath);
+        // console.log('Cannot find UI definition at path', lessPath);
       }
     })
   ;

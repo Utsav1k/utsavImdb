@@ -16,7 +16,7 @@ class CheckLogged extends Component{
         // if(cookies.get('jwt')==undefined){
         //     this.setState({isLogged:false});
         // }
-        console.log(LandingModel.isLogged);
+        // console.log(LandingModel.isLogged);
         LandingModel.isLogged==true?this.setState({isLogged:true}):this.setState({isLogged:false})
     }
         render(){

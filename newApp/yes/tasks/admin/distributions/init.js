@@ -78,7 +78,7 @@ module.exports = function(callback) {
       localRepoSetup     = fs.existsSync(path.join(outputDirectory, '.git'))
     ;
 
-    console.log('Processing repository: ' + outputDirectory);
+    // console.log('Processing repository: ' + outputDirectory);
 
     // create folder if doesn't exist
     if( !fs.existsSync(outputDirectory) ) {
@@ -144,7 +144,7 @@ module.exports = function(callback) {
     }
 
     function nextRepo() {
-      //console.log('Sleeping for 1 second...');
+      //// console.log('Sleeping for 1 second...');
       // avoid rate throttling
       global.clearTimeout(timer);
       timer = global.setTimeout(function() {

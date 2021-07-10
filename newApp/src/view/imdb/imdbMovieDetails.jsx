@@ -33,7 +33,7 @@ class ImdbHome extends Component{
                                 {this.state.selectedMovieDetails.length !=null && this.state.selectedMovieDetails.length !="" ?<span> <b>Length:</b> {this.state.selectedMovieDetails.length} <p /></span> :null}
                                 {this.state.selectedMovieDetails.technical_specs[0]!=undefined &&this.state.selectedMovieDetails.technical_specs[0][1]!=undefined &&this.state.selectedMovieDetails.technical_specs[0][1] !=null && this.state.selectedMovieDetails.technical_specs[0][1] !="" ? <span><b>Runtime:</b> {this.state.selectedMovieDetails.technical_specs[0][1].replace("<br>","; ")} <p /></span> :null}
                                 {this.state.selectedMovieDetails.actor !=null && this.state.selectedMovieDetails.actor !="" ? <span><b>Cast:</b> {this.state.selectedMovieDetails.cast.map((item,index) =><span key={item.actor_id}>{item.actor} ({item.character}){index!=this.state.selectedMovieDetails.length-1?", ":null}</span>)} <p /></span> :null}
-                                {this.state.selectedMovieDetails.trailer !=null && this.state.selectedMovieDetails.trailer.link !="" ? <span><b>Trailer:</b> <a target="_blank" href={this.state.selectedMovieDetails.trailer.link} >IMDB Trailer</a> <p /><iframe src="https://www.imdb.com/video/vi4240746009?asIframe" /></span> :null}
+                                {this.state.selectedMovieDetails.trailer !=null && this.state.selectedMovieDetails.trailer.link !="" ? <span><b>Trailer:</b> <a target="_blank" href={this.state.selectedMovieDetails.trailer.link} >IMDB Trailer</a> <p /><iframe src={this.state.selectedMovieDetails.trailer.link} /></span> :null}
 
                             </Modal.Description>
                         </Modal.Content>

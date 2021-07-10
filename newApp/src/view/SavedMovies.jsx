@@ -14,9 +14,9 @@ class SavedMovies extends React.Component{
             try {
               const res = await Route.Imdb.getSavedMovies(  ) ;
               this.setState({movieList:res.body});
-              console.log(res);
+              // console.log(res);
             } catch (err) {
-              console.log(err);
+              // console.log(err);
             }
           })();
     }

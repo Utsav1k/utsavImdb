@@ -21,10 +21,10 @@ class LoginController{
               thisParent.setState({isLogged:true});
               thisParent.setState({reglog:''});
               thisParent.setState({loginError:false});
-              console.log(res);
+              // console.log(res);
             } catch (err) {
               thisParent.setState({loginError:true});
-              console.log(err);
+              // console.log(err);
             }
             
           })();
