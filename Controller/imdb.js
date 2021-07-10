@@ -9,7 +9,7 @@ const searchByNameParams =  {
   method: 'GET',
   url: searchUrl,
   headers: {
-    'x-rapidapi-key': process.env.rapidApikey||'b9425fb8ffmsh252c27ead67d2d9p1f43efjsne5ab0f1e16b1',
+    'x-rapidapi-key': process.env.rapidApikey,
     'x-rapidapi-host': 'imdb-internet-movie-database-unofficial.p.rapidapi.com',
     useQueryString: true
   }
