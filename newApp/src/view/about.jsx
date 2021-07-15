@@ -43,7 +43,7 @@ class About extends Component{
                     {/* <Image src={aboutImage} height="450" width="100%"/>*/}
                 </Segment> 
                 <Segment id="contact me">
-                    <i><h3>To contact me call on this no.: 9529201966 <p />Mail me here : <a href="mailto:utsav.khandelwal.wdm@gmail.com">utsav.khandelwal.wdm@gmail.com</a>  </h3></i> 
+                    <i><h3>Mail me here : <a href="mailto:utsav.khandelwal.wdm@gmail.com">utsav.khandelwal.wdm@gmail.com</a>  </h3></i> 
                 </Segment>
             </div>
         )
